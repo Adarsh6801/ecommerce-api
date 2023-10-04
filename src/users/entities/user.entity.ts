@@ -1,20 +1,21 @@
 import { Roles } from 'src/utility/common/user-roles.enum';
-import{Entity, PrimaryGeneratedColumn, Column} from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity('users')
 export class UserEntity {
     @PrimaryGeneratedColumn()
-    id:number;
+    id: number;
 
     @Column()
-    name:string;
+    name: string;
     
     @Column()
-    email:string;
+    email: string;
     
     @Column()
-    password:string;
+    password: string;
 
-    @Column({type:'enum',enum:Roles,array:true,default:[Roles.USER]})
-    roles:Roles[];
+    @Column({ type: 'enum', enum: Roles, default: Roles.USER }) // Remove 'array: true'
+    roles: Roles;
 }
+
